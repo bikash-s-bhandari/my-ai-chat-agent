@@ -133,7 +133,7 @@ app.post("/chat", async (req, res) => {
     { role: "user", content: userText }
   ];
   const reply = await runWithTools(messages);
-  res.json({ reply });
+  res.json({ message: reply });
 });
 // Core loop: call LLM; if it asks to call a tool, execute, append, and continue once
 async function runWithTools(messages) {
