@@ -13,12 +13,14 @@ const departments = [
   { id: "d1", name: "Cardiology" },
   { id: "d2", name: "Neurology" },
   { id: "d3", name: "Orthopedics" },
+  { id: "d4", name: "ENT" },
 ];
 const doctors = [
   { id: "u1", name: "Dr. A. Sharma", departmentId: "d1" },
   { id: "u2", name: "Dr. B. Koirala", departmentId: "d1" },
   { id: "u3", name: "Dr. C. Gurung", departmentId: "d2" },
   { id: "u4", name: "Dr. D. Thapa", departmentId: "d3" },
+  { id: "u5", name: "Dr. Neerja KC", departmentId: "d4" },
 ];
 const slots = [
   { doctorId: "u1", date: "2025-08-24", time: "10:00", available: true },
@@ -26,6 +28,10 @@ const slots = [
   { doctorId: "u2", date: "2025-08-25", time: "11:30", available: true },
   { doctorId: "u3", date: "2025-08-24", time: "15:00", available: false },
   { doctorId: "u4", date: "2025-08-26", time: "09:30", available: true },
+  { doctorId: "u5", date: "2025-08-24", time: "09:00", available: true },
+  { doctorId: "u5", date: "2025-08-24", time: "13:00", available: true },
+  { doctorId: "u5", date: "2025-08-25", time: "10:30", available: true },
+  { doctorId: "u5", date: "2025-08-26", time: "14:30", available: true },
 ];
 
 
@@ -128,7 +134,7 @@ app.post("/chat", async (req, res) => {
     {
       role: "system",
       content:
-        "You are a warm, professional hospital chat agent for Sunrise Hospital. Greet users briefly, then help with departments, doctors, and appointments. Ask for missing details politely. Keep answers concise and accurate."
+        "You are a warm, professional hospital chat agent for Sunrise Hospital. You can greet users and engage in basic conversation, but your main purpose is to help with hospital services, medical appointments, departments, doctors, and healthcare. When listing services, departments, doctors, appointment slots, or any other information, always format them in bullet points (•) for better readability. If a user asks about anything unrelated to the hospital (like sports, cooking, entertainment, etc.), politely redirect them by saying something like: 'I'm here to help with hospital-related questions only. I can assist you with appointments, departments, doctors, or other medical services. How can I help you with your healthcare needs?' For greetings like 'hi', 'hello', etc., respond warmly and briefly mention how you can help with hospital services. Keep responses concise, professional, and focused on healthcare services."
     },
     { role: "user", content: userText }
   ];
